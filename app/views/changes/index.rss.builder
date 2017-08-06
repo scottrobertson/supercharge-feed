@@ -8,14 +8,16 @@ xml.rss :version => "2.0" do
     @changes.each do |change|
 
       remap_status = {
-        'CONSTRUCTION' => 'under contruction'
+        'OPEN' => 'is now open',
+        'CONSTRUCTION' => 'is under contruction',
+        'PERMIT' => 'has a permit application'
       }
 
-      status = (remap_status[change['siteStatus']] || change['siteStatus']).titleize
+      status = (remap_status[change['siteStatus']] || change['siteStatus'])
 
       xml.item do
         xml.title "#{change['siteName']} - #{change['siteStatus']}"
-        xml.description "#{change['siteName']}#{change['country'] == 'USA' ? ', USA' : nil} is now #{status}"
+        xml.description "#{change['siteName']}#{change['country'] == 'USA' ? ', USA' : nil} #{status}"
         xml.pubDate change['date'].to_datetime.to_s(:rfc822)
         xml.link "https://supercharge.info/##{change['siteId']}"
         xml.guid "https://supercharge.info/change/#{change['id']}"
