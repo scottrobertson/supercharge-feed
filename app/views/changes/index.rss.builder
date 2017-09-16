@@ -9,7 +9,7 @@ xml.rss :version => "2.0" do
 
       remap_status = {
         'OPEN' => 'is now open',
-        'CONSTRUCTION' => 'is under contruction',
+        'CONSTRUCTION' => 'is under construction',
         'PERMIT' => 'has a permit application'
       }
 
