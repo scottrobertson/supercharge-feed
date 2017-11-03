@@ -16,9 +16,13 @@ xml.rss :version => "2.0" do
 
       status = (remap_status[change['siteStatus']] || change['siteStatus'])
 
+      # @note Remove the prefix that supercharge.info seem to be adding now
+      site_name = change['siteName']
+      site_name.slice!('Supercharger - ')
+
       xml.item do
-        xml.title "#{change['siteName']} - #{change['siteStatus']}"
-        xml.description "#{change['siteName']}#{change['country'] == 'USA' ? ', USA' : nil} #{status}"
+        xml.title "#{site_name} - #{change['siteStatus']}"
+        xml.description "#{site_name}#{change['country'] == 'USA' ? ', USA' : nil} #{status}"
         xml.pubDate change['date'].to_datetime.to_s(:rfc822)
         xml.link "https://supercharge.info/service/supercharge/discuss?siteId=#{change['siteId']}"
         xml.guid "https://supercharge.info/change/#{change['id']}"
