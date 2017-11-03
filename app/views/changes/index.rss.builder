@@ -20,7 +20,7 @@ xml.rss :version => "2.0" do
         xml.title "#{change['siteName']} - #{change['siteStatus']}"
         xml.description "#{change['siteName']}#{change['country'] == 'USA' ? ', USA' : nil} #{status}"
         xml.pubDate change['date'].to_datetime.to_s(:rfc822)
-        xml.link "https://supercharge.info/service/supercharge/discuss?siteId=##{change['siteId']}"
+        xml.link "https://supercharge.info/service/supercharge/discuss?siteId=#{change['siteId']}"
         xml.guid "https://supercharge.info/change/#{change['id']}"
       end
     end
