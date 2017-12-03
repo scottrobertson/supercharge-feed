@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  root controller: :changes, action: :index
+
+
+  root to: 'application#health'
+
   get '/changes', to: 'changes#index'
 end
