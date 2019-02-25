@@ -158,7 +158,7 @@ DEPENDENCIES
   byebug
   listen
   puma
-  rails (~> 5)
+  rails (~> 5.2)
   rails_12factor
   rest-client
   spring
