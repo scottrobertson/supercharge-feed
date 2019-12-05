@@ -5,27 +5,28 @@ type: kubernetes
 trigger:
   branch:
     - master
-    
+
 steps:
   - name: docker
     storage_driver: overlay
     image: plugins/docker
     settings:
-      username: admin
+      username:
+        from_secret: docker_password
       password:
         from_secret: docker_password
-      registry: registry.scottrobertson.me
-      repo: registry.scottrobertson.me/supercharge-feed
+      registry: registry.digitalocean.com
+      repo: registry.digitalocean.com/scott/supercharge-feed
       tags:
         - "${DRONE_BRANCH}"
         - "${DRONE_COMMIT}"
       cache_from:
-        - "registry.scottrobertson.me/supercharge-feed:${DRONE_BRANCH}"
+        - "registry.digitalocean.com/scott/supercharge-feed:${DRONE_BRANCH}"
 
   - name: deploy
     image: quay.io/honestbee/drone-kubernetes
     settings:
       deployment: supercharge-feed-web
-      repo: registry.scottrobertson.me/supercharge-feed
+      repo: registry.digitalocean.com/scott/supercharge-feed
       container: supercharge-feed-web
       tag: ${DRONE_COMMIT}
