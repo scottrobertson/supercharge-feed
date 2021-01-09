@@ -42,7 +42,7 @@ jobs:
         with:
           push: ${{ env.GHCR_TOKEN != '' }}
           tags: |
-            ghcr.io/${{ github.repository }}:sha-${{ github.sha::8 }}
+            ghcr.io/${{ github.repository }}:sha-${{ github.sha }}
             ghcr.io/${{ github.repository }}:latest
           cache-from: type=local,src=/tmp/.docker-buildx-cache
           cache-to: type=local,dest=/tmp/.docker-buildx-cache
