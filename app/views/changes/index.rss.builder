@@ -12,6 +12,7 @@ xml.rss :version => "2.0" do
         'CONSTRUCTION' => 'is under construction',
         'PERMIT' => 'has a permit application',
         'CLOSED' => 'is now closed',
+        'CLOSED_TEMP' => 'is temporarily closed',
       }
 
       status = (remap_status[change['siteStatus']] || change['siteStatus'])
