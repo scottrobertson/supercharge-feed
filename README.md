@@ -1,6 +1,8 @@
 # supercharge.info RSS feed
 
-A simple, unofficial app that pulls data from http://supercharge.info and formats it into an RSS feed.
+A simple, unofficial app that pulls data from <http://supercharge.info> and formats it into an RSS feed.
+
+This feed is used by a Zapier bot to automatically post to Twitter.
 
 - [RSS Feed](https://superchargers.scottrobertson.me/changes.rss)
 - [Country RSS Feed](https://superchargers.scottrobertson.me/changes.rss?country=United%20Kingdom)
