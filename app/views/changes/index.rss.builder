@@ -21,6 +21,11 @@ xml.rss :version => "2.0" do
       site_name = change['siteName']
       site_name.slice!('Supercharger - ')
 
+      site_info = @site_info[change['siteId']]
+
+      status += " with #{site_info['stallCount']} stalls" if site_info.to_h['stallCount']
+      status += " (#{site_info['powerKilowatt']} kW)" if site_info.to_h['powerKilowatt'].to_i > 0
+
       xml.item do
         xml.title "#{site_name} - #{change['siteStatus']}"
         xml.description "#{site_name}#{change['country'] == 'USA' ? ', USA' : nil} #{status}"
