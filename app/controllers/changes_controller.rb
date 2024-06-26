@@ -1,6 +1,6 @@
 class ChangesController < ApplicationController
   def index
-    @changes = JSON.parse(RestClient.get('https://supercharge.info/service/supercharge/allChanges?count=1000')).select{|d| d['notify'] != false }
+    @changes = JSON.parse(RestClient.get('https://supercharge.info/service/supercharge/allChanges?count=100')).select{|d| d['notify'] != false }
     @changes = @changes.select{|d| d['country'].downcase == params[:country].downcase } if params[:country].present?
     @changes = @changes.select{|d| d['region'].downcase == params[:region].downcase } if params[:region].present?
 
