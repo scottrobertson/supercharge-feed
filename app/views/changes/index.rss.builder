@@ -13,6 +13,9 @@ xml.rss :version => "2.0" do
         'PERMIT' => 'has a permit application',
         'CLOSED' => 'is now closed',
         'CLOSED_TEMP' => 'is temporarily closed',
+        'PLAN' => 'is being planned',
+        'EXPANDING' => 'is being expanded, currently',
+        'VOTING' => 'has won in voting'
       }
 
       status = (remap_status[change['siteStatus']] || change['siteStatus'])
@@ -23,7 +26,7 @@ xml.rss :version => "2.0" do
 
       site_info = @site_info[change['siteId']]
 
-      status += " with #{site_info['stallCount']} stalls" if site_info.to_h['stallCount']
+      status += " with #{site_info['stallCount']} stalls" if site_info.to_h['stallCount'].to_i > 0
       status += " (#{site_info['powerKilowatt']} kW)" if site_info.to_h['powerKilowatt'].to_i > 0
 
       xml.item do
